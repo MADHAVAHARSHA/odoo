@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="pos_payment_method_view_form_inherit_datacap" model="ir.ui.view">
+        <field name="name">pos.payment.method.form.inherit.datacap</field>
+        <field name="model">pos.payment.method</field>
+        <field name="inherit_id" ref="point_of_sale.pos_payment_method_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='use_payment_terminal']" position="after">
+                <!-- Datacap -->
+                <field name="datacap_base_url" invisible="use_payment_terminal != 'datacap'" required="use_payment_terminal == 'datacap'"/>
+                <field name="datacap_merchant_id" invisible="use_payment_terminal != 'datacap'" required="use_payment_terminal == 'datacap'"/>
+                <field name="datacap_operator_id" invisible="use_payment_terminal != 'datacap'" required="use_payment_terminal == 'datacap'"/>
+                <field name="datacap_device_id" invisible="use_payment_terminal != 'datacap'" required="use_payment_terminal == 'datacap'"/>
+                <field name="datacap_username" invisible="use_payment_terminal != 'datacap'" required="use_payment_terminal == 'datacap'"/>
+                <field name="datacap_password" invisible="use_payment_terminal != 'datacap'" required="use_payment_terminal == 'datacap'" password="True"/>
+               <div class="mt16" invisible="use_payment_terminal != 'datacap'" required="use_payment_terminal == 'datacap'">
+    <div class="row">
+        <div class="col-md-6 mb-2">
+            <button name="download_emv_params"
+                    type="object"
+                    icon="oi-arrow-right"
+                    string="Download EMV Params"
+                    class="btn btn-outline-secondary w-100"/>
+        </div>
+        <div class="col-md-6 mb-2">
+            <button name="reset_emv_params"
+                    string="Reset EMV Parameters"
+                    type="object"
+                    class="btn btn-danger w-100"
+                    icon="fa-refresh"/>
+        </div>
+        <div class="col-md-6 mb-2">
+            <button name="batch_summary"
+                    type="object"
+                    icon="fa-list-alt"
+                    string="Batch Summary"
+                    class="btn btn-outline-secondary w-100"/>
+        </div>
+        <div class="col-md-6 mb-2">
+            <button name="batch_close"
+                    type="object"
+                    icon="fa-lock"
+                    string="Batch Close"
+                    class="btn btn-primary w-100"/>
+        </div>
+    </div>
+</div>
+
+            </xpath>
+        </field>
+    </record>
+</odoo>

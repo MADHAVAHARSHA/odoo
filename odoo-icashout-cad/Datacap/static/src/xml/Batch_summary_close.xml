@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<template id="template" xml:space = "preserve">
+    <t t-name="batch_summary_close.Navbar" t-inherit = "point_of_sale.Navbar" t-inherit-mode = "extension">
+        <!-- Add dummy buttons at the end of the dropdown list -->
+    <xpath expr="//div[contains(@class, 'pos-burger-menu-items')]" position="inside">
+        <DropdownItem onSelected="() => alert('Dummy Batch Summary clicked')">
+            Dummy Batch Summary
+        </DropdownItem>
+        <DropdownItem onSelected="() => alert('Dummy Batch Close clicked')">
+            Dummy Batch Close
+        </DropdownItem>
+    </xpath>
+    </t>
+</template>

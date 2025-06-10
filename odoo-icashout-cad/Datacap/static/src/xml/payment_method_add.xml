@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <!-- Extend TicketScreen template -->
+    <t t-name="Custom.TicketScreen" t-inherit="point_of_sale.TicketScreen" t-inherit-mode="extension">
+
+        <!-- Add "Payment Method" column to the table header -->
+        <xpath expr="//div[@class='header-row d-flex text-bg-700 fw-bolder']" position="inside">
+            <div class="col wide p-2">Payment Method</div>
+        </xpath>
+
+        <!-- Add "Payment Method" details in the order rows -->
+        <xpath expr="//div[@class='order-row']" position="inside">
+            <div class="col wide p-2">
+                <t t-if="order.paymentlines">
+                    <t t-foreach="order.paymentlines" t-as="line" t-key="line_index">
+                        <div class="d-flex">
+                            <span class="fw-bolder" t-esc="line.name"/> <!-- Shows Cash or Card -->
+                            <span t-esc="props.formatCurrency(line.amount)" class="ms-auto"/> <!-- Payment Amount -->
+                        </div>
+                    </t>
+                </t>
+            </div>
+        </xpath>
+
+        <!-- Add "Payment Method" in mobile view -->
+        <xpath expr="//div[contains(@class, 'mobileOrderList order-row rounded-3')]/div[contains(@class, 'col p-2 d-flex justify-content-between align-items-center')]" position="before">
+            <t t-if="order.paymentlines and order.paymentlines[0]">
+                <div class="col p-2 d-flex justify-content-between align-items-center">
+                    <div>Payment Method:</div>
+                    <div><t t-esc="order.paymentlines[0].name" /></div>
+                </div>
+            </t>
+        </xpath>
+
+    </t>
+</templates>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="pos_sale.ControlButtons" t-inherit="point_of_sale.ControlButtons" t-inherit-mode="extension">
+        <xpath expr="//t[@t-if='props.showRemainingButtons']/div/button[3]" position="replace">
+            <button t-att-class="buttonClass" t-on-click="() => this.clickRefund()">
+                <i class="fa fa-undo me-1" role="img" aria-label="Refund" title="Refund"></i>
+                Refund/Void
+            </button>
+        </xpath>
+    </t>
+</templates>

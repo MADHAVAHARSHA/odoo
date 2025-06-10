@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates id="template" xml:space="preserve">
+    <t t-name="Datacap.ControlButtons" t-inherit="point_of_sale.PaymentScreenButtons" t-inherit-mode="extension">
+        <xpath expr="//button[@class='button partner-button btn btn-light btn-lg w-100 w-md-50 lh-lg text-truncate']" position="before">
+            <button class="btn btn-light btn-lg flex-shrink-0 ms-auto"
+        t-att-class="buttonClass"
+        t-on-click="() => this.onClickPopupSingleFiled()">
+    <i class="fa fa-columns me-2" role="img" aria-label="Split Icon" title="Split"></i> Split
+</button>
+        </xpath>
+    </t>
+</templates>

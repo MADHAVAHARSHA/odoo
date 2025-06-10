@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="pos_payment_method_manual_entry" model="pos.payment.method">
+                <field name="name">Manual Entry</field>
+                <field name="type">bank</field>
+                <field name="journal_id">6</field>
+                <field name="payment_method_type">terminal</field>
+                <field name="use_payment_terminal">datacap</field>
+        </record>
+</odoo>
